@@ -1,0 +1,49 @@
+{
+  "pipeline": {
+    "name": "Batch Data Pipeline",
+    "version": "0.1.0",
+    "description": "Extensible batch data extraction and loading pipeline"
+  },
+  "sources": {
+    "jsonplaceholder_posts": {
+      "type": "rest_api",
+      "base_url": "https://jsonplaceholder.typicode.com",
+      "endpoint": "posts",
+      "method": "GET",
+      "headers": {
+        "Accept": "application/json"
+      },
+      "params": {},
+      "timeout": 30
+    },
+    "jsonplaceholder_users": {
+      "type": "rest_api",
+      "base_url": "https://jsonplaceholder.typicode.com",
+      "endpoint": "users",
+      "method": "GET",
+      "headers": {
+        "Accept": "application/json"
+      },
+      "params": {},
+      "timeout": 30
+    },
+    "jsonplaceholder_comments": {
+      "type": "rest_api",
+      "base_url": "https://jsonplaceholder.typicode.com",
+      "endpoint": "comments",
+      "method": "GET",
+      "headers": {
+        "Accept": "application/json"
+      },
+      "params": {
+        "_start": 0,
+        "_limit": 10
+      },
+      "timeout": 30
+    }
+  },
+  "load_config": {
+    "default_load_type": "full_load",
+    "output_directory": "./data"
+  }
+}

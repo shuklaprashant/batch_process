@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  batch-pipeline:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: batch-pipeline
+    volumes:
+      - ./data:/app/data
+      - ./config:/app/config
+    environment:
+      - LOG_LEVEL=INFO
+    command: extract --source jsonplaceholder_posts --load-type full_load
